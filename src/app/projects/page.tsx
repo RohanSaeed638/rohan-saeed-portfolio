@@ -166,7 +166,7 @@ export default function ProjectsPage() {
           {filtered.map(({ title, desc, tags, status, color, emoji, href, featured }, i) => (
             <div key={title}
               className={`card reveal reveal-delay-${(i % 3) + 1} flex flex-col p-6 ${featured ? 'ring-1' : ''}`}
-              style={featured ? { ringColor: 'rgba(245,166,35,0.2)' } : {}}>
+              style={featured ? { boxShadow: '0 0 0 1px rgba(245,166,35,0.2)' } : undefined}>
               {/* Top row */}
               <div className="flex items-start justify-between mb-4">
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl"
