@@ -186,6 +186,7 @@ export default function ProjectsPage() {
               <div className="flex items-center gap-3 pt-4" style={{ borderTop: '1px solid var(--line)' }}>
                 {href && href !== '#' &&
                 <a href={href}
+                  target="_blank" rel="noopener noreferrer"
                   className="flex items-center gap-1.5 text-sm font-medium transition-colors"
                   style={{ color: 'var(--gold)' }}
                   onMouseEnter={e => (e.currentTarget as HTMLElement).style.opacity = '0.7'}
