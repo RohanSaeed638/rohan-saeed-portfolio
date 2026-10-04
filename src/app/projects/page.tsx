@@ -8,10 +8,21 @@ const ALL_PROJECTS = [
     desc: 'Full-stack sales CRM with kanban pipeline, contacts management, activities, analytics, CSV export, and Stripe subscriptions.',
     tags: ['Next.js', 'Supabase', 'Clerk', 'Stripe', 'PostgreSQL'],
     category: 'Web Apps',
-    status: 'Live Demo',
+    status: 'Portfolio',
     color: '#6366F1',
     emoji: '⚡',
     href: '#',
+    featured: false,
+  },
+  {
+    title: 'Finance AI Assistant',
+    desc: 'AI-powered personal finance assistant that helps users understand transactions, track spending, analyze financial patterns, and get intelligent insights through a conversational interface.',
+    tags: ['Next.js', 'FastAPI', 'PostgreSQL', 'AI', 'LLM'],
+    category: 'AI & ML',
+    status: 'Live Demo',
+    color: '#22C55E',
+    emoji: '💰',
+    href: 'https://finance-ai-assistant-seven.vercel.app/',
     featured: true,
   },
   {
@@ -23,7 +34,7 @@ const ALL_PROJECTS = [
     color: '#00C896',
     emoji: '🤖',
     href: '#',
-    featured: true,
+    featured: false,
   },
   {
     title: 'Uraan AI',
@@ -34,7 +45,7 @@ const ALL_PROJECTS = [
     color: '#F5A623',
     emoji: '🚀',
     href: '#',
-    featured: false,
+    featured: true,
   },
   {
     title: 'Ravaan Labs',
@@ -44,18 +55,7 @@ const ALL_PROJECTS = [
     status: 'Live',
     color: '#EC4899',
     emoji: '🏢',
-    href: '#',
-    featured: false,
-  },
-  {
-    title: 'Intelligize (NorthBay)',
-    desc: 'Enterprise legal-tech platform for SEC filing analysis with OpenLLM + Claude Sonnet integration. Large-scale multi-tenant ASP.NET system.',
-    tags: ['ASP.NET', 'C#', 'OpenLLM', 'Claude API'],
-    category: 'AI & ML',
-    status: 'Professional',
-    color: '#8B5CF6',
-    emoji: '⚖️',
-    href: '#',
+    href: 'https://www.ravaanlabs.com/',
     featured: true,
   },
   {
@@ -99,17 +99,6 @@ const ALL_PROJECTS = [
     status: 'Portfolio',
     color: '#EF4444',
     emoji: '⛓️',
-    href: '#',
-    featured: false,
-  },
-  {
-    title: 'Open edX Tutor Maintainer',
-    desc: 'Maintained and customized Open edX deployments, handled updates, stability improvements, and integrations at Arbisoft.',
-    tags: ['Django', 'Python', 'Open edX', 'DevOps'],
-    category: 'Open Source',
-    status: 'Professional',
-    color: '#84CC16',
-    emoji: '🎓',
     href: '#',
     featured: false,
   },
@@ -193,8 +182,9 @@ export default function ProjectsPage() {
               <div className="flex flex-wrap gap-1.5 mb-5">
                 {tags.map(t => <span key={t} className="tech-tag">{t}</span>)}
               </div>
-
+              
               <div className="flex items-center gap-3 pt-4" style={{ borderTop: '1px solid var(--line)' }}>
+                {href && href !== '#' &&
                 <a href={href}
                   className="flex items-center gap-1.5 text-sm font-medium transition-colors"
                   style={{ color: 'var(--gold)' }}
@@ -204,6 +194,7 @@ export default function ProjectsPage() {
                   Live Demo
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                 </a>
+                }
                 <a href="https://github.com/RohanSaeed0411" target="_blank" rel="noopener noreferrer"
                   className="flex items-center gap-1.5 text-sm transition-colors"
                   style={{ color: 'var(--mist)' }}
