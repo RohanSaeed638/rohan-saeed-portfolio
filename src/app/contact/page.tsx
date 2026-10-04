@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 const CONTACTS = [
   { label: 'Email', value: 'rohan.saeed.638@gmail.com', href: 'mailto:rohan.saeed.638@gmail.com', icon: '✉️' },
   { label: 'LinkedIn', value: 'linkedin.com/in/rohan-saeed', href: 'https://linkedin.com/in/rohan-saeed-b54752227', icon: '💼' },
-  { label: 'GitHub', value: 'github.com/RohanSaeed0411', href: 'https://github.com/RohanSaeed0411', icon: '🐙' },
+  { label: 'GitHub', value: 'github.com/RohanSaeed0638', href: 'https://github.com/RohanSaeed638', icon: '🐙' },
   { label: 'Location', value: 'Islamabad, Pakistan', href: null, icon: '📍' },
 ]
 
@@ -25,6 +25,7 @@ export default function ContactPage() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
   const [sent, setSent] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
   useEffect(() => {
     const obs = new IntersectionObserver(
@@ -39,10 +40,44 @@ export default function ContactPage() {
     setForm(f => ({ ...f, [e.target.name]: e.target.value }))
   }
 
-  function handleSubmit(e: React.FormEvent) {
+
+
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
+
     setLoading(true)
-    setTimeout(() => { setLoading(false); setSent(true) }, 1200)
+    setError('')
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(form),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Unable to send message.')
+      }
+
+      setSent(true)
+      setForm({
+        name: '',
+        email: '',
+        message: '',
+      })
+    } catch (err) {
+      setError(
+        err instanceof Error
+          ? err.message
+          : 'Something went wrong. Please try again.'
+      )
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -136,6 +171,18 @@ export default function ContactPage() {
                     onBlur={e => (e.target.style.borderColor = 'rgba(255,255,255,0.1)')}
                   />
                 </div>
+                {error && (
+                  <div
+                    className="text-sm rounded-lg px-4 py-3"
+                    style={{
+                      color: '#ff8a8a',
+                      background: 'rgba(255, 80, 80, 0.08)',
+                      border: '1px solid rgba(255, 80, 80, 0.2)',
+                    }}
+                  >
+                    {error}
+                  </div>
+                )}
                 <button type="submit" disabled={loading} className="btn-gold w-full justify-center"
                   style={{ opacity: loading ? 0.6 : 1 }}>
                   {loading ? 'Sending...' : 'Send Message →'}
