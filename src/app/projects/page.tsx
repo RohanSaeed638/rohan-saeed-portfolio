@@ -4,14 +4,27 @@ import Link from 'next/link'
 
 const ALL_PROJECTS = [
   {
-    title: 'SalesFlow CRM',
-    desc: 'Full-stack sales CRM with kanban pipeline, contacts management, activities, analytics, CSV export, and Stripe subscriptions.',
-    tags: ['Next.js', 'Supabase', 'Clerk', 'Stripe', 'PostgreSQL'],
+    title: 'DocFlow',
+    desc: 'Document workflow application designed to streamline document creation, organization, and processing through a modern web interface.',
+    tags: ['Next.js', 'TypeScript', 'AI', 'Document Processing'],
     category: 'Web Apps',
     status: 'Portfolio',
-    color: '#6366F1',
-    emoji: '⚡',
+    color: '#8B5CF6',
+    emoji: '📄',
     href: '#',
+    githubLink:1,
+    featured: false,
+  },
+  {
+    title: 'AI Book Generator',
+    desc: 'AI-powered book generation platform that transforms ideas into structured long-form books through an automated content generation workflow.',
+    tags: ['AI', 'LLM', 'Python', 'Next.js'],
+    category: 'AI & ML',
+    status: 'Portfolio',
+    color: '#F97316',
+    emoji: '📚',
+    href: '#',
+    githubLink:1,
     featured: false,
   },
   {
@@ -23,19 +36,20 @@ const ALL_PROJECTS = [
     color: '#22C55E',
     emoji: '💰',
     href: 'https://finance-ai-assistant-seven.vercel.app/',
+    githubLink:1,
     featured: true,
   },
-  {
-    title: 'SupportAI Agent Builder',
-    desc: 'Multi-tenant SaaS — businesses upload docs and get a RAG-powered chatbot embeddable on any site. Uses pgvector + Claude API.',
-    tags: ['Claude API', 'pgvector', 'LangChain', 'Next.js', 'Stripe'],
-    category: 'AI & ML',
-    status: 'Portfolio',
-    color: '#00C896',
-    emoji: '🤖',
-    href: '#',
-    featured: false,
-  },
+  // {
+  //   title: 'SupportAI Agent Builder',
+  //   desc: 'Multi-tenant SaaS — businesses upload docs and get a RAG-powered chatbot embeddable on any site. Uses pgvector + Claude API.',
+  //   tags: ['Claude API', 'pgvector', 'LangChain', 'Next.js', 'Stripe'],
+  //   category: 'AI & ML',
+  //   status: 'Portfolio',
+  //   color: '#00C896',
+  //   emoji: '🤖',
+  //   href: '#',
+  //   featured: false,
+  // },
   {
     title: 'Uraan AI',
     desc: 'Personalized AI career roadmaps with learning phases, tasks, and curated resources to help learners achieve their goals.',
@@ -45,6 +59,7 @@ const ALL_PROJECTS = [
     color: '#F5A623',
     emoji: '🚀',
     href: '#',
+    githubLink:1,
     featured: true,
   },
   {
@@ -56,30 +71,31 @@ const ALL_PROJECTS = [
     color: '#EC4899',
     emoji: '🏢',
     href: 'https://www.ravaanlabs.com/',
+    githubLink:1,
     featured: true,
   },
-  {
-    title: 'E-commerce Store',
-    desc: 'Full-stack e-commerce platform with cart, orders, admin dashboard, and payment integration.',
-    tags: ['React', 'Node.js', 'MongoDB'],
-    category: 'E-commerce',
-    status: 'Portfolio',
-    color: '#10B981',
-    emoji: '🛒',
-    href: '#',
-    featured: false,
-  },
-  {
-    title: 'Healthcare Translation',
-    desc: 'Voice-to-text and real-time translation prototype for healthcare settings with audio playback.',
-    tags: ['React', 'Python', 'OpenAI'],
-    category: 'AI & ML',
-    status: 'Prototype',
-    color: '#06B6D4',
-    emoji: '🏥',
-    href: '#',
-    featured: false,
-  },
+  // {
+  //   title: 'E-commerce Store',
+  //   desc: 'Full-stack e-commerce platform with cart, orders, admin dashboard, and payment integration.',
+  //   tags: ['React', 'Node.js', 'MongoDB'],
+  //   category: 'E-commerce',
+  //   status: 'Portfolio',
+  //   color: '#10B981',
+  //   emoji: '🛒',
+  //   href: '#',
+  //   featured: false,
+  // },
+  // {
+  //   title: 'Healthcare Translation',
+  //   desc: 'Voice-to-text and real-time translation prototype for healthcare settings with audio playback.',
+  //   tags: ['React', 'Python', 'OpenAI'],
+  //   category: 'AI & ML',
+  //   status: 'Prototype',
+  //   color: '#06B6D4',
+  //   emoji: '🏥',
+  //   href: '#',
+  //   featured: false,
+  // },
   {
     title: 'RIDEEZ',
     desc: 'React Native ride-sharing app with supply/demand balancing algorithm. Final year project at FAST-NUCES.',
@@ -89,6 +105,7 @@ const ALL_PROJECTS = [
     color: '#F59E0B',
     emoji: '🚗',
     href: '#',
+    githubLink:2,
     featured: false,
   },
   {
@@ -100,6 +117,7 @@ const ALL_PROJECTS = [
     color: '#EF4444',
     emoji: '⛓️',
     href: '#',
+    githubLink:2,
     featured: false,
   },
 ]
@@ -152,7 +170,7 @@ export default function ProjectsPage() {
 
         {/* Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {filtered.map(({ title, desc, tags, status, color, emoji, href, featured }, i) => (
+          {filtered.map(({ title, desc, tags, status, color, emoji, href, githubLink, featured }, i) => (
             <div key={title}
               className={`card reveal reveal-delay-${(i % 3) + 1} flex flex-col p-6 ${featured ? 'ring-1' : ''}`}
               style={featured ? { boxShadow: '0 0 0 1px rgba(245,166,35,0.2)' } : undefined}>
@@ -196,7 +214,7 @@ export default function ProjectsPage() {
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                 </a>
                 }
-                <a href="https://github.com/RohanSaeed0411" target="_blank" rel="noopener noreferrer"
+                <a href={githubLink === 1 ? "https://github.com/RohanSaeed638" : "https://github.com/RohanSaeed0411"} target="_blank" rel="noopener noreferrer"
                   className="flex items-center gap-1.5 text-sm transition-colors"
                   style={{ color: 'var(--mist)' }}
                   onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = '#fff'}

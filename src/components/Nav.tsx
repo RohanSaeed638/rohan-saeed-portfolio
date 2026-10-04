@@ -87,7 +87,7 @@ export default function Nav() {
 
           <div className="hidden md:flex items-center gap-3">
             {/* Social icons */}
-            <a href="https://github.com/RohanSaeed0411" target="_blank" rel="noopener noreferrer"
+            <a href="https://github.com/RohanSaeed638" target="_blank" rel="noopener noreferrer"
               className="w-8 h-8 rounded-lg flex items-center justify-center transition-all hover:bg-white/5"
               style={{ color: 'var(--mist)' }}
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = '#fff' }}
